@@ -1,2 +1,0 @@
-declare const MAXIMUM_PASSWORD_LENGTH = 20;
-export { MAXIMUM_PASSWORD_LENGTH };
