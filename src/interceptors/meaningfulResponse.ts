@@ -1,14 +1,14 @@
 import { NestInterceptor, CallHandler, ExecutionContext } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { ApiResponse } from 'src/service/dto/api-response.dto';
+import { ApiResponse } from 'dtos/response';
 import { map } from 'rxjs';
 
-export class MeanfulResponseInterceptor<T>
+export class MeaningfulResponseInterceptor<T>
   implements NestInterceptor<T, ApiResponse<T>>
 {
   intercept(
     context: ExecutionContext,
-    next: CallHandler<any>,
+    next: CallHandler<any>
   ): Observable<ApiResponse<T>> {
     console.log('custom interceptor');
 
@@ -17,7 +17,7 @@ export class MeanfulResponseInterceptor<T>
         statusCode: context.switchToHttp().getResponse().statusCode,
         message: data.message || '',
         data: data,
-      })),
+      }))
     );
   }
 }

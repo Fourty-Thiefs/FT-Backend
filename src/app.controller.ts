@@ -1,16 +1,21 @@
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
-import { MeanfulResponseInterceptor } from './interceptors/meanful-response.interceptor';
+import { MeaningfulResponseInterceptor } from './interceptors/meaningfulResponse';
 import { ApiTags } from '@nestjs/swagger';
 
-@Controller('app')
+@Controller('/')
 @ApiTags('defaults')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('get-number')
-  @UseInterceptors(MeanfulResponseInterceptor)
+  @UseInterceptors(MeaningfulResponseInterceptor)
   getHello(): number {
     return this.appService.getNumber();
+  }
+
+  @Get('/')
+  startedPage() {
+    return this.appService.getHello();
   }
 }

@@ -1,10 +1,10 @@
 interface String {
-  startWithInvarient(searchTerm: string, ignoreCase?: boolean): boolean;
+  startWithInvariant(searchTerm: string, ignoreCase?: boolean): boolean;
 }
 
-String.prototype.startWithInvarient = function (
+String.prototype.startWithInvariant = function (
   searchTerm: string,
-  ignoreCase = true,
+  ignoreCase = true
 ): boolean {
   let searchIn: string = this as string;
 

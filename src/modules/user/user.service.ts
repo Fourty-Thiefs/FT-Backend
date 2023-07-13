@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import '../../infrastructure/extensions/string-custom.extension';
+import 'infrastructure/extensions/stringCustom';
 
 @Injectable()
 export class UserService {
