@@ -6,7 +6,9 @@ import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { ValidationPipe, VersioningType } from "@nestjs/common";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ["error", "log", "warn", "debug"],
+  });
 
   app.useGlobalPipes(new ValidationPipe()).enableVersioning({
     type: VersioningType.URI,
