@@ -1,26 +1,26 @@
-import { Controller, Get, UseInterceptors } from "@nestjs/common";
-import { MeanfulResponseInterceptor } from "src/interceptors/meanful-response.interceptor";
-import { HomeService } from "./home.service";
-import { ApiTags } from "@nestjs/swagger";
-import { BaseControllerWrapper } from "src/infrastructure/decorator/controller-base.decorator";
+import { Controller, Get } from '@nestjs/common';
+
+import { HomeService } from './home.service';
+
+import { BaseControllerWrapper } from 'infrastructure/decorator/controller-base';
 
 @Controller({
-  path: "home",
-  version: "1",
+  path: 'home',
+  version: '1',
 })
-@BaseControllerWrapper("home-module")
+@BaseControllerWrapper('home-module')
 export class HomeController {
   constructor(private readonly homeService: HomeService) {}
 
-  @Get("users")
+  @Get('users')
   getUsers(): Array<any> {
-    console.log("controller");
+    console.log('controller');
 
     return this.homeService.getUser();
   }
 
   @Get()
   getHome(): string {
-    return "Hello";
+    return 'Hello';
   }
 }

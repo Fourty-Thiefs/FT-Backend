@@ -4,8 +4,8 @@ import { IsEmail, IsNotEmpty, MinLength, MaxLength } from 'class-validator';
 import {
   REQUIRED_PASSWORD,
   MAXIMUM_PASSWORD_MESSAGE,
-} from 'src/infrastructure/constant/validator.constant';
-import { UserRole } from 'src/infrastructure/enums/user-role.enums';
+} from 'infrastructure/constant/validator';
+import { UserRole } from 'infrastructure/enums/userRole';
 
 export class CreateUserRequestDto {
   @ApiProperty()

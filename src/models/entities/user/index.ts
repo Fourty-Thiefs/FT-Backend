@@ -1,4 +1,4 @@
-import { BaseEntity } from 'src/infrastructure/utilities/baseEntity/base-entity.utilities';
+import BaseEntity from 'entities/base';
 
 export class User extends BaseEntity {
   userName: string;

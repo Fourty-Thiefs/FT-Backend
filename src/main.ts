@@ -1,13 +1,15 @@
-import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 
-import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
-import { ValidationPipe, VersioningType } from "@nestjs/common";
+import { ValidationPipe, VersioningType } from '@nestjs/common';
+
+const PORT = 8080;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    logger: ["error", "log", "warn", "debug"],
+    logger: ['error', 'log', 'warn', 'debug'],
   });
 
   app.useGlobalPipes(new ValidationPipe()).enableVersioning({
@@ -15,18 +17,18 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle("Store Management")
-    .setDescription("The store management API description")
-    .addTag("store")
+    .setTitle('Shopping Platform')
+    .setDescription('Shopping Platform API Description')
+    .addTag('shopping-platform')
     .addBearerAuth()
     .addApiKey()
-    .setLicense("License", "License Url")
+    .setLicense('License', 'License Url')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup("/", app, document);
+  SwaggerModule.setup('/swagger', app, document);
 
-  await app.listen(8080);
+  await app.listen(PORT);
 }
 
 bootstrap();

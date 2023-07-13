@@ -1,4 +1,4 @@
-import { MAXIMUM_PASSWORD_LENGTH } from './common.constant';
+import { MAXIMUM_PASSWORD_LENGTH } from './common';
 
 const REQUIRED_PASSWORD = 'Please input a password';
 const MAXIMUM_PASSWORD_MESSAGE = `Password is too long, maximum length is ${MAXIMUM_PASSWORD_LENGTH} charactors`;
