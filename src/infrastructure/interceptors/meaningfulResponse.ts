@@ -1,6 +1,6 @@
 import { NestInterceptor, CallHandler, ExecutionContext } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { ApiResponse } from 'dtos/response';
+import { ApiResponse } from 'services/dtos/response';
 import { map } from 'rxjs';
 
 export class MeaningfulResponseInterceptor<T>
@@ -15,7 +15,7 @@ export class MeaningfulResponseInterceptor<T>
     return next.handle().pipe(
       map((data) => ({
         statusCode: context.switchToHttp().getResponse().statusCode,
-        message: data.message || '',
+        message: data?.message || '',
         data: data,
       }))
     );

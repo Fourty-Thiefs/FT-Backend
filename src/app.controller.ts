@@ -1,6 +1,6 @@
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { AppService } from './app.service';
-import { MeaningfulResponseInterceptor } from './interceptors/meaningfulResponse';
+import { MeaningfulResponseInterceptor } from 'infrastructure/interceptors/meaningfulResponse';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('/')

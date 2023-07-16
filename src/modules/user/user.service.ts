@@ -1,19 +1,24 @@
-import { Injectable } from '@nestjs/common';
-import 'infrastructure/extensions/stringCustom';
+import { Inject, Injectable } from '@nestjs/common';
+import UserRepository from './user.repository';
+import User from 'domains/entities/user';
+import { CreateUserRequestDto } from 'services/dtos/user/createUserRequest';
 
 @Injectable()
 export class UserService {
-  getUser() {
-    const response: Array<User> = [
-      { name: 'Tam', age: 10 },
-      { name: 'Ngoc', age: 8 },
-    ];
+  constructor(
+    @Inject(UserRepository) private readonly userRepository: UserRepository
+  ) {}
 
-    return response;
+  getUsers() {
+    return this.userRepository.findAll();
   }
-}
 
-interface User {
-  name: string;
-  age: number;
+  async createNewUser(user: CreateUserRequestDto) {
+    const newUser = User.fromJson({
+      ...user,
+      birthDate: new Date(user.birthDate),
+    });
+
+    return this.userRepository.create(newUser);
+  }
 }

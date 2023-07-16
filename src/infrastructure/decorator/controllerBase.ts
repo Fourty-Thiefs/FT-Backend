@@ -1,6 +1,6 @@
 import { applyDecorators, UseInterceptors } from '@nestjs/common';
-import { MeaningfulResponseInterceptor } from 'interceptors/meaningfulResponse';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { MeaningfulResponseInterceptor } from 'infrastructure/interceptors/meaningfulResponse';
+import { ApiTags } from '@nestjs/swagger';
 
 export function BaseControllerWrapper(tag: string) {
   /* Custom Decorator */

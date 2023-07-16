@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 
 import { HomeService } from './home.service';
 
-import { BaseControllerWrapper } from 'infrastructure/decorator/controller-base';
+import { BaseControllerWrapper } from 'infrastructure/decorator/controllerBase';
 
 @Controller({
   path: 'home',
