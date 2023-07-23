@@ -3,12 +3,12 @@ import type { Knex } from 'knex';
 // Update with your config settings.
 
 const config: { [key: string]: Knex.Config } = {
-  development: {
+  [process.env.MODE]: {
     client: 'postgresql',
     connection: {
-      database: 'FT-Shopping',
-      user: 'postgres',
-      password: 'admin',
+      database: process.env.DATABASE_NAME,
+      user: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
     },
     pool: {
       min: 2,
