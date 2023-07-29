@@ -1,6 +1,6 @@
-import { JSONSchema, Model, QueryContext } from 'objection';
+import { JSONSchema, Model } from 'objection';
 
-export interface IKey extends Model {
+export interface IKey {
   readonly id: string;
 }
 
