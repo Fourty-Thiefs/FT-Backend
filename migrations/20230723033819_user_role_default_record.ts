@@ -1,7 +1,7 @@
 import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
-  return knex('User')
+  return knex('Users')
     .insert([
       {
         id: 1,
@@ -17,7 +17,7 @@ export async function up(knex: Knex): Promise<void> {
       },
     ])
     .then(() => {
-      return knex('Role').insert([
+      return knex('Roles').insert([
         {
           id: 1,
           name: 'Admin',
@@ -28,7 +28,7 @@ export async function up(knex: Knex): Promise<void> {
       ]);
     })
     .then(() => {
-      return knex('UserRole').insert({
+      return knex('UserRoles').insert({
         id: 1,
         userId: 1,
         roleId: 1,

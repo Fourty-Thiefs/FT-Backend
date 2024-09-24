@@ -2,7 +2,7 @@ import { Knex } from 'knex';
 import baseEntity from '../baseEntityMigration';
 
 export async function up(knex: Knex): Promise<void> {
-  return knex.schema.createTable('User', (table) => {
+  return knex.schema.createTable('Users', (table) => {
     table.increments('id').unique().notNullable();
     table.string('firstName').notNullable();
     table.string('lastName').notNullable();
@@ -15,5 +15,5 @@ export async function up(knex: Knex): Promise<void> {
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.dropTable('User');
+  return knex.schema.dropTable('Users');
 }

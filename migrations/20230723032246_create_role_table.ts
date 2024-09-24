@@ -3,31 +3,31 @@ import baseEntity from '../baseEntityMigration';
 
 export async function up(knex: Knex): Promise<void> {
   return knex.schema
-    .createTable('Role', (table) => {
+    .createTable('Roles', (table) => {
       table.increments('id').unique().notNullable();
       table.string('name').notNullable();
       table.boolean('isActive').defaultTo(1);
       baseEntity(table);
     })
     .then(() => {
-      return knex.schema.createTable('UserRole', (table) => {
+      return knex.schema.createTable('UserRoles', (table) => {
         table.increments('id').unique().notNullable();
         table
           .integer('userId')
           .unsigned()
           .notNullable()
           .references('id')
-          .inTable('User');
+          .inTable('Users');
         table
           .integer('roleId')
           .unsigned()
           .notNullable()
           .references('id')
-          .inTable('Role');
+          .inTable('Roles');
       });
     });
 }
 
 export async function down(knex: Knex): Promise<void> {
-  return knex.schema.dropTable('UserRole').dropTable('Role');
+  return knex.schema.dropTable('UserRoles').dropTable('Roles');
 }
